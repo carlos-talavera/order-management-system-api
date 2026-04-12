@@ -1,16 +1,8 @@
 services:
-  postgres:
-    image: 'postgres:17.5-alpine3.20'
-    environment:
-      - 'POSTGRES_DB=order_management_system'
-      - 'POSTGRES_PASSWORD=root'
-      - 'POSTGRES_USER=Charlangas%21'
-    ports:
-      - '5432'
   rabbitmq:
     image: 'rabbitmq:4.2.5-alpine'
     environment:
-      - 'RABBITMQ_DEFAULT_PASS=Charlangas%21'
+      - 'RABBITMQ_DEFAULT_PASS=secret123'
       - 'RABBITMQ_DEFAULT_USER=root'
     ports:
-      - '5672'
+      - '5672:5672'
