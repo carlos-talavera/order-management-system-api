@@ -15,6 +15,12 @@
     <name>user-service</name>
 
     <dependencies>
+        <!-- Local -->
+        <dependency>
+            <groupId>com.charlie2code</groupId>
+            <artifactId>shared</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <!-- Spring -->
         <dependency>
