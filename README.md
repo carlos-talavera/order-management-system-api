@@ -104,7 +104,7 @@ The system relies on the following components:
 
 ---
 
-### 4. Shipping Service (Optional but Recommended)
+### 4. Shipping Service
 
 **Consumes:**
 - `PAYMENT_PROCESSED`

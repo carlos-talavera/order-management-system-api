@@ -13,6 +13,7 @@
     <name>order-management-system</name>
 
     <modules>
+        <module>shared</module>
         <module>user-service</module>
     </modules>
 

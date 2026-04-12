@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: carlos-talavera
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: auth_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: first_name
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(256)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: timestamp(3)
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp(3)
+                  defaultValueComputed: now()
+                  constraints:
+                    nullable: false
