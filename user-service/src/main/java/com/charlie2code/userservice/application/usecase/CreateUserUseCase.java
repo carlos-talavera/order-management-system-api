@@ -5,6 +5,7 @@ import com.charlie2code.userservice.application.mapper.createuser.CreateUserMapp
 import com.charlie2code.userservice.domain.entity.User;
 import com.charlie2code.userservice.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class CreateUserUseCase {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public UUID execute(CreateUserCommand command) {
         User user = CreateUserMapper.toDomain(command);
 
