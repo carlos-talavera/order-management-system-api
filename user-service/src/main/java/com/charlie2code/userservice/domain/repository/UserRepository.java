@@ -1,9 +1,11 @@
 package com.charlie2code.userservice.domain.repository;
 
 import com.charlie2code.userservice.domain.entity.User;
-import com.charlie2code.userservice.domain.valueobject.Email;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public interface UserRepository {
-    Boolean existsByEmail(Email email);
+    Optional<User> findByAuthId(UUID authId);
     User save(User user);
 }
