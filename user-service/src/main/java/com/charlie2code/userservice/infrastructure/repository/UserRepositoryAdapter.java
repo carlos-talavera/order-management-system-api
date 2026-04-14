@@ -6,9 +6,6 @@ import com.charlie2code.userservice.infrastructure.entity.UserRow;
 import com.charlie2code.userservice.infrastructure.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-import java.util.UUID;
-
 @Repository
 public class UserRepositoryAdapter implements UserRepository {
     private final SpringDataUserRepository repository;
@@ -18,15 +15,27 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByAuthId(UUID authId) {
-        return repository.findByAuthId(authId).map(UserMapper::toDomain);
-    }
+    public User insertIfNotExists(User user) {
+        UserRow row = UserMapper.toRow(user);
 
-    @Override
-    public User save(User user) {
-        UserRow userRow = UserMapper.toRow(user);
-        UserRow savedRow = repository.save(userRow);
-
-        return UserMapper.toDomain(savedRow);
+        return repository.insertIfNotExists(
+            row.getId(),
+            row.getAuthId(),
+            row.getFirstName(),
+            row.getLastName(),
+            row.getEmail(),
+            row.getCreatedAt(),
+            row.getUpdatedAt()
+        )
+            .map(UserMapper::toDomain)
+            .orElseGet(() ->
+                repository.findByAuthId(row.getAuthId())
+                    .map(UserMapper::toDomain)
+                    .orElseThrow(() ->
+                            new IllegalStateException(
+                                    "Insert failed and user not found for authId=" + row.getAuthId()
+                            )
+                    )
+            );
     }
 }
