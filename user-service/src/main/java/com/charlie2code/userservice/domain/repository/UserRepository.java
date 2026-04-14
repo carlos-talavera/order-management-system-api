@@ -3,5 +3,5 @@ package com.charlie2code.userservice.domain.repository;
 import com.charlie2code.userservice.domain.entity.User;
 
 public interface UserRepository {
-    User insertIfNotExists(User user);
+    User save(User user);
 }

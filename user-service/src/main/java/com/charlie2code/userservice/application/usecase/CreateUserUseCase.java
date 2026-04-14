@@ -18,6 +18,6 @@ public class CreateUserUseCase {
 
     @Transactional
     public UUID execute(CreateUserCommand command) {
-        return userRepository.insertIfNotExists(CreateUserMapper.toDomain(command)).getId().getValue();
+        return userRepository.save(CreateUserMapper.toDomain(command)).getId().getValue();
     }
 }

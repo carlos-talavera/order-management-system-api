@@ -15,10 +15,10 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
-    public User insertIfNotExists(User user) {
+    public User save(User user) {
         UserRow row = UserMapper.toRow(user);
 
-        return repository.insertIfNotExists(
+        UserRow result = repository.upsert(
             row.getId(),
             row.getAuthId(),
             row.getFirstName(),
@@ -26,16 +26,8 @@ public class UserRepositoryAdapter implements UserRepository {
             row.getEmail(),
             row.getCreatedAt(),
             row.getUpdatedAt()
-        )
-            .map(UserMapper::toDomain)
-            .orElseGet(() ->
-                repository.findByAuthId(row.getAuthId())
-                    .map(UserMapper::toDomain)
-                    .orElseThrow(() ->
-                            new IllegalStateException(
-                                    "Insert failed and user not found for authId=" + row.getAuthId()
-                            )
-                    )
-            );
+        );
+
+        return UserMapper.toDomain(result);
     }
 }
