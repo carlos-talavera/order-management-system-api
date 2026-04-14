@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.util.UUID;
 
 public interface SpringDataUserRepository extends JpaRepository<UserRow, Long> {
-    @SuppressWarnings("SpringDataRepositoryMethodInspection")
     @Query(value = """
         INSERT INTO users (id, auth_id, first_name, last_name, email, created_at, updated_at)
         VALUES (:id, :authId, :firstName, :lastName, :email, :createdAt, :updatedAt)
