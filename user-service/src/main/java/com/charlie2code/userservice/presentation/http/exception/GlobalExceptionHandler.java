@@ -1,4 +1,4 @@
-package com.charlie2code.userservice.infrastructure.web;
+package com.charlie2code.userservice.presentation.http.exception;
 
 import com.charlie2code.userservice.application.exception.ApplicationException;
 import com.charlie2code.userservice.domain.exception.DomainException;
