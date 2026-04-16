@@ -2,6 +2,7 @@ package com.charlie2code.userservice.application.mapper.createuser;
 
 import com.charlie2code.userservice.application.command.createuser.CreateUserCommand;
 import com.charlie2code.userservice.application.dto.createuser.CreateUserRequest;
+import com.charlie2code.userservice.application.messaging.usercreated.UserCreatedInput;
 import com.charlie2code.userservice.domain.entity.User;
 import com.charlie2code.userservice.domain.valueobject.Email;
 import com.charlie2code.userservice.domain.valueobject.UserId;
@@ -18,6 +19,15 @@ public class CreateUserMapper {
             request.email(),
             request.firstName(),
             request.lastName()
+        );
+    }
+
+    public static CreateUserCommand toCommand(UserCreatedInput input) {
+        return new CreateUserCommand(
+            input.getAuthId(),
+            input.getEmail(),
+            input.getFirstName(),
+            input.getLastName()
         );
     }
 

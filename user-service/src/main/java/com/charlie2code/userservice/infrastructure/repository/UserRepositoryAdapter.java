@@ -2,7 +2,6 @@ package com.charlie2code.userservice.infrastructure.repository;
 
 import com.charlie2code.userservice.domain.entity.User;
 import com.charlie2code.userservice.domain.repository.UserRepository;
-import com.charlie2code.userservice.domain.valueobject.Email;
 import com.charlie2code.userservice.infrastructure.entity.UserRow;
 import com.charlie2code.userservice.infrastructure.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
@@ -16,15 +15,19 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
-    public Boolean existsByEmail(Email email) {
-        return repository.existsByEmail(email.getValue());
-    }
-
-    @Override
     public User save(User user) {
-        UserRow userRow = UserMapper.toRow(user);
-        UserRow savedRow = repository.save(userRow);
+        UserRow row = UserMapper.toRow(user);
 
-        return UserMapper.toDomain(savedRow);
+        UserRow result = repository.upsert(
+            row.getId(),
+            row.getAuthId(),
+            row.getFirstName(),
+            row.getLastName(),
+            row.getEmail(),
+            row.getCreatedAt(),
+            row.getUpdatedAt()
+        );
+
+        return UserMapper.toDomain(result);
     }
 }

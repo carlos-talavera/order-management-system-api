@@ -27,7 +27,7 @@ public final class UserId {
     }
 
     public UUID getValue() {
-        return this.value;
+        return value;
     }
 
     @Override

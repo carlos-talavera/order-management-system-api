@@ -22,7 +22,7 @@ public final class Email {
     }
 
     public String getValue() {
-        return this.value;
+        return value;
     }
 
     @Override

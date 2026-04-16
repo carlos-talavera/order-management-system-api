@@ -1,7 +1,6 @@
-package com.charlie2code.userservice.infrastructure.web;
+package com.charlie2code.userservice.presentation.http.exception;
 
 import com.charlie2code.userservice.application.exception.ApplicationException;
-import com.charlie2code.userservice.application.exception.EmailAlreadyExistsException;
 import com.charlie2code.userservice.domain.exception.DomainException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +23,6 @@ public class GlobalExceptionHandler {
                 Instant.now()
         );
         return new ResponseEntity<>(body, status);
-    }
-
-    @ExceptionHandler(EmailAlreadyExistsException.class)
-    public ResponseEntity<ProblemDetails> handleEmailAlreadyExists(EmailAlreadyExistsException ex, HttpServletRequest request) {
-        return buildResponse(ex, HttpStatus.CONFLICT, request);
     }
 
     @ExceptionHandler(DomainException.class)

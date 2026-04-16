@@ -1,4 +1,4 @@
-package com.charlie2code.userservice.presentation;
+package com.charlie2code.userservice.presentation.http.controller;
 
 import com.charlie2code.userservice.application.command.createuser.CreateUserCommand;
 import com.charlie2code.userservice.application.dto.createuser.CreateUserRequest;
@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<CreateUserResult> create(@RequestBody @Valid CreateUserRequest request) {
         CreateUserCommand command = CreateUserMapper.toCommand(request);
-        UUID userId = this.createUserUseCase.execute(command);
+        UUID userId = createUserUseCase.execute(command);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new CreateUserResult(userId.toString()));
     }

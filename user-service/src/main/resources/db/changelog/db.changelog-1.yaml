@@ -33,7 +33,7 @@ databaseChangeLog:
                   name: email
                   type: varchar(256)
                   constraints:
-                    nullable: true
+                    nullable: false
               - column:
                   name: created_at
                   type: timestamp(3)
