@@ -1,9 +1,12 @@
 package com.charlie2code.userservice.domain.valueobject;
 
 import com.charlie2code.userservice.domain.exception.InvalidUserIdException;
+import lombok.Data;
+import lombok.Getter;
 
 import java.util.UUID;
 
+@Getter
 public final class UserId {
     private final UUID value;
 
@@ -24,10 +27,6 @@ public final class UserId {
         } catch (IllegalArgumentException ex) {
             throw new InvalidUserIdException(value);
         }
-    }
-
-    public UUID getValue() {
-        return value;
     }
 
     @Override

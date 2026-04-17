@@ -3,12 +3,12 @@ package com.charlie2code.userservice.domain.entity;
 import com.charlie2code.userservice.domain.exception.InvalidUserException;
 import com.charlie2code.userservice.domain.valueobject.Email;
 import com.charlie2code.userservice.domain.valueobject.UserId;
-import lombok.Data;
+import lombok.Getter;
 
 import java.time.Instant;
 import java.util.UUID;
 
-@Data
+@Getter
 public final class User {
     private final UserId id;
     private final UUID authId;

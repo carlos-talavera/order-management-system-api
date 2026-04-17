@@ -1,9 +1,11 @@
 package com.charlie2code.userservice.domain.valueobject;
 
 import com.charlie2code.userservice.domain.exception.InvalidEmailException;
+import lombok.Getter;
 
 import java.util.regex.Pattern;
 
+@Getter
 public final class Email {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}$");
 
@@ -19,10 +21,6 @@ public final class Email {
 
     public static Email of(String value) {
         return new Email(value);
-    }
-
-    public String getValue() {
-        return value;
     }
 
     @Override
