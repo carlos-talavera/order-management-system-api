@@ -18,7 +18,7 @@ public class UserCreatedConsumer {
     }
 
     public void handle(UserCreatedInput input) {
-        log.info("Handling UserCreatedMessage for authId={}", input.getAuthId());
+        log.info("Handling UserCreatedMessage for authId={}", input.authId());
 
         CreateUserCommand command = CreateUserMapper.toCommand(input);
 

@@ -24,10 +24,10 @@ public class CreateUserMapper {
 
     public static CreateUserCommand toCommand(UserCreatedInput input) {
         return new CreateUserCommand(
-            input.getAuthId(),
-            input.getEmail(),
-            input.getFirstName(),
-            input.getLastName()
+            input.authId(),
+            input.email(),
+            input.firstName(),
+            input.lastName()
         );
     }
 
