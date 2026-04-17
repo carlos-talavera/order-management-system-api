@@ -15,10 +15,11 @@
     <modules>
         <module>shared</module>
         <module>user-service</module>
+        <module>auth-service</module>
     </modules>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>25</java.version>
         <spring.boot.version>4.0.5</spring.boot.version>
     </properties>
 
